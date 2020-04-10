@@ -1,0 +1,141 @@
+@mixin animate_background($class) {
+  &:hover {
+    @include define_background("../images/redes_sociais/#{$class}-hover.svg");
+
+    img {
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+}
+
+@mixin animate_background_color($actual, $next) {
+  background-color: $actual;
+  transition: 0.5s background;
+
+  &:hover {
+    background-color: $next;
+    transition: 0.5s background;
+  }
+}
+
+@mixin animate_fade_in_out($son: '') {
+  #{son} {
+    animation: 0.2s opacity_fade_in forwards;
+  }
+
+  &:hover #{$son} {
+    animation: 0.2s opacity_fade_out forwards;
+  }
+}
+
+@keyframes opacity_fade_out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes opacity_fade_in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin animate_left_border($color) {
+  box-shadow: inset 0 0 0 0 $color;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: inset 10px 0 0 0 $color;
+    transition: all 0.3s ease;
+  }
+}
+
+@mixin text_color_animate($color, $son: '') {
+  transition: 0.3s ease;
+
+  &:hover #{$son} {
+    color: $color;
+    transition: color 0.3s ease;
+  }
+}
+
+@mixin rotate_element($degrees) {
+  transform: rotate(0);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate($degrees);
+    ;
+    transition: transform 0.3s ease;
+  }
+}
+
+@mixin rotate_son_element($degrees, $son) {
+  #{$son} {
+    transform: rotate(0);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover #{$son} {
+    transform: rotate($degrees);
+    ;
+    transition: transform 0.3s ease;
+  }
+}
+
+@mixin growth_animate() {
+  transform: scale(1);
+  transition: 0.2s transform;
+
+  &:hover {
+    transform: scale(1.01);
+    transition: 0.2s transform;
+  }
+}
+
+@mixin animate_seta {
+  animation: animate_seta alternate .5s infinite;
+}
+
+@keyframes animate_seta {
+  0% {
+    right: 15px;
+  }
+
+  100% {
+    right: 35px
+  }
+}
+
+@keyframes animate_from_left_to_right {
+  from {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes animate_from_right_to_left {
+  from {
+    opacity: 0;
+    transform: translate3d(20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

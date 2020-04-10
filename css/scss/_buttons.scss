@@ -1,0 +1,47 @@
+.menu-sandwich{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  @include cell_phone{
+    background-color: black;
+    position: fixed;
+    border: solid 3px;
+    padding: 5px; 
+    top: 15px;
+    left: unset;
+    right: 25px;
+    z-index: 2000;
+    width: 25px;
+    height: 30px; 
+    border-radius: 10px;
+  }
+  &__line{
+    display: none;
+    @include cell_phone{
+      display: block;
+    }
+    width: 25px;
+    height: 5px;
+    background-color: $second_color;
+    transform: rotateZ(0);
+    transition: .3s ease-out;
+  }
+  &.active &__line{
+    &--one{
+      transform: rotateZ(-45deg);
+      position: relative;
+      top: 10px;
+      transition: transform .3s ease-out;
+    }
+    &--three{
+      transform: rotatez(45deg);
+      position: relative;
+      top: -10px;
+      transition: transform .3s ease-out;
+    }
+    &--two{
+      opacity: 0;
+      transition: opacity .3s ease-out;
+    }
+  }
+}

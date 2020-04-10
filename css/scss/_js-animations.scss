@@ -1,0 +1,45 @@
+.js .anime-left {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    transition: .3s;
+}
+
+.anime-right {
+    opacity: 0;
+    transform: translate3d(30px, 0, 0);
+    transition: .3s;
+    @include cell-phone{
+        transform: translate3d(0, 0, 0);
+        visibility: hidden;
+    }
+}
+
+.js .anime-menu {
+    opacity: 0;
+    transition: .3s;
+    @include cell-phone{
+        transform: translate3d(0, 0, 0);
+        visibility: hidden;
+    }
+}
+
+.js .anime-center {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    transition: .3s;
+}
+
+.js [class*="anime"].active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+}  
+
+.js .logo{
+    transform: rotate3d( 1, 0, 0, -720deg);
+}
+
+.js .logo.active{
+    transform: rotate3d(0, 0, 0, 0);
+    transition: 1s ease-out;
+}

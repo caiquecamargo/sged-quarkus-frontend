@@ -1,0 +1,18 @@
+.main__who-we-are{
+  grid-area: "content";
+  padding: 10px;
+}
+
+.who-we-are__header{
+  &__title{
+    margin-bottom: 30px;
+    @include font_main_title;
+    @include font_linear_gradient_text_color($first_color);
+  }
+}
+.who-we-are__content{
+  &__text{
+    @include font_main_text;
+    color: white;
+  }
+}

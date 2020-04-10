@@ -1,0 +1,231 @@
+$main_font: 'News701 BT', sans-serif;
+$second_font: 'Philosopher', cursive;
+
+//HEADER
+@mixin font_header_title{
+  font-family: $main_font;
+  font-size: 5rem;
+  text-transform: uppercase;
+  @include cell_phone{
+    font-size: 2rem;
+  }
+}
+
+@mixin font_header_subtitle{
+  font-family: $second_font;
+  font-size: 2rem;
+  @include cell_phone{
+    font-size: 1rem;
+  }
+}
+
+//INDEX
+@mixin font_main_title{
+  font-family: $main_font;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  text-transform: uppercase;
+  text-align: center;
+  @include font_linear_gradient_text_color($first_color);
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_main_subtitle{
+  font-family: $second_font;
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+  font-style: italic;
+  @include font_linear_gradient_text_color($second_color);
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_main_text{
+  font-family: $second_font;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  font-style: italic;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_main_module_title{
+  font-family: $main_font;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_main_module_subtitle{
+  font-family: $main_font;
+  font-size: 1.3rem;
+  text-align: center;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_main_module_text{
+  font-family: $second_font;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: italic;
+  @include cell_phone{
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_main_module_button{
+  font-family: $main_font;
+  font-size: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+//PORTFOLIO
+@mixin font_portfolio_title{
+  font-family: $main_font;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  text-transform: uppercase;
+  text-align: center;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+
+@mixin font_portfolio_subtitle{
+  font-family: $second_font;
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+  font-style: italic;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_portfolio_esp{
+  font-family: $second_font;
+  font-size: 1.5rem;
+  font-style: italic;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_portfolio_item_title{
+  font-family: $main_font;
+  font-size: 1.3rem;
+  text-align: center;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_portfolio_item_text{
+  font-family: $second_font;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: italic;
+  @include cell_phone{
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_portfolio_item_price{
+  font-family: $main_font;
+  font-size: 1.3rem;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_portfolio_item_button{
+  font-family: $main_font;
+  font-size: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+//FOOTER
+@mixin font_footer{
+  font-family: $second_font;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-style: italic;
+  text-align: center;
+}
+
+//ASIDE
+@mixin font_aside_title{
+  font-family: $main_font;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: $background_color;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_aside_subtitle{
+  font-family: $second_font;
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+  font-style: italic;
+  color: white;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_aside_text{
+  font-family: $second_font;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  font-style: italic;
+  color: white;
+  @include cell_phone{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@mixin font_sumario{
+  font-family: $second_font;
+  font-size: 1rem;
+  color: white;
+}
+
+//UTIL
+@mixin font_linear_gradient_text_color($color){
+  @include linear_gradient($color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}

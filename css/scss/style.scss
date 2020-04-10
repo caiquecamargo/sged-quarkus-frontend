@@ -1,0 +1,39 @@
+//INITIAL PARAMETERS
+@import "normalize";
+@import "reset";
+
+//RESPONSIVE
+@import "responsive";
+
+//USER FUNCTIONS AND MIXINS
+@import "settings";
+@import "colorManagement";
+@import "fontManagement";
+@import "shadowManagement";
+@import "animations";
+@import "buttons";
+
+//GLOBAL PARAMETERS
+@import "globalParameters";
+
+//GRID TEMPLATE
+@import "grid";
+
+//BACKGROUND
+@import "background";
+
+//HEADER
+@import "header";
+
+//CONTENT
+@import "aside";
+@import "index";
+@import "who-we-are";
+@import "portfolio";
+@import "pageSelectorAnimation";
+
+//FOOTER
+@import "footer";
+
+//JS ANIMATIONS
+@import "js-animations";

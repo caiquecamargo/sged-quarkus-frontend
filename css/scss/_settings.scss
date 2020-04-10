@@ -1,0 +1,60 @@
+// PAGE SETTINGS
+@mixin container_settings{
+  max-width: 1080px;
+  margin: 0 auto;
+  @include cell-phone{
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+}
+
+@mixin underline($width: 215px, $height: 3px, $margin: 0px, $align: auto){
+  &::after{
+    content: '';
+    display: block;
+    width: $width;
+    height: $height;
+    margin: $margin $align;
+    background: $second_color;
+    border-radius: 4px;
+  }
+}
+
+@mixin separator($width: 215px, $height: 2px){
+  &::before,
+  &::after{
+    content: '';
+    display: block;
+    width: $width;
+    height: $height;
+    margin: 0 15px;
+  }
+  &::before{
+    @include linear_fadeout_left;
+  }
+  &::after{
+    @include linear_fadeout_right;
+  }
+}
+
+@mixin separator_two($width: 215px, $height: 2px){
+  &::before,
+  &::after{
+    content: '';
+    display: block;
+    width: $width;
+    height: $height;
+    margin: 0 15px;
+  }
+  &::before{
+    @include linear_fadeout_left_two;
+  }
+  &::after{
+    @include linear_fadeout_right_two;
+  }
+}
+
+@mixin define_background($url){
+  background: url($url) no-repeat center center;
+  background-size: cover;
+}

@@ -1,0 +1,284 @@
+.main__portfolio{
+  grid-area: "content";
+  @include grid(4);
+  gap: 30px;
+  @include little-window{
+    @include grid(3);
+  }
+  @include cell-phone{
+    @include grid(1);
+    padding: 50px;
+  }
+  &__header{
+    grid-column: 1 / -1;
+    &__title{
+      @include font_portfolio_title;
+      color: white;
+      &::after{
+        content: '';
+        width: 50px;
+        height: 5px;
+        border: none;
+        background: white;
+        display: block;
+        margin: 0 auto;
+        margin-top: 15px;
+        @include cell_phone{
+          height: 3px;
+        }
+      }
+    }
+    &__subtitle{
+      @include font_portfolio_subtitle;
+      color: white;
+      @include cell_phone{
+        line-height: 0rem;
+        margin-bottom: 0;
+      }
+    }
+    &__esptitle{
+      @include font_portfolio_esp;
+      color: white;
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+      @include cell_phone{
+        margin-top: 15px;
+      }
+      &::before{
+        content: '';
+        width: 15px;
+        height: 1px;
+        margin-right: 5px;
+        background-color: white;
+      }
+      &::after{
+        content: '';
+        flex: 1;
+        height: 1px;
+        background-color: white;
+        margin-left: 8px;
+        margin-top: 2px;
+      }
+    }
+  }
+  &__item{
+    display: grid;
+    height: 350px;
+    grid-template-rows: [row1-start] 4fr [row1-end row2-start] 1fr [row2-end];
+    background: white;
+    position: relative;
+    padding: 15px;
+    transition: .3s;
+    z-index: auto;
+    &:hover:before{
+      background: $first_color;
+      transition: .3s;
+    }
+    &:before{
+      content: '';
+      position: absolute;
+      top: -2px;
+      bottom: -2px;
+      left: -2px;
+      right: -2px;
+      transform: skew(2deg, 2deg);
+      z-index: -1;
+      background-color: $second_color;
+      transition: .3s;
+    }
+    &__img{
+      align-self: center;
+      max-height: 230px;
+    }
+    &__content{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &__header{
+      &__title{
+        @include font_portfolio_item_title;
+        margin-bottom: 10px;
+        &:after{
+          content: '';
+          width: 100%;
+          height: 2px;
+          background: $background_color;
+          display: block;
+          margin-top: 5px;
+        }
+      }
+    }
+    &__description{
+      @include font_portfolio_item_text;
+    }
+    &__last-line{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__price{
+      @include font_portfolio_item_price;
+    }
+    &__button{
+      background: $background_color;
+      padding: 10px 20px;
+      @include font_portfolio_item_button;
+      color: white;
+      transition: .3s;
+      transform: translate3d(0, -20px, 0);
+      opacity: 0;
+      @include cell_phone{
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+      &:hover{
+        background: $third_color;
+        transition: .3s;
+      }
+    }
+    &:hover &__button{
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      transition: .3s;
+    }
+    // &.active{
+    //   position: relative;
+    //   left: 0;
+    //   width: 1280px;
+    //   flex-direction: row;
+    //   justify-content: space-between;
+    // }
+    // &__content.active{
+    //   width: 100%;
+    // }
+  }
+}
+
+.portfolio-highlight{
+  position: fixed;
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999999;
+  &.active{
+    display: flex;
+    justify-content: center;
+  }
+  &__container{
+    position: relative;
+    height: 75vh;
+    width: 80vw;
+    background: white;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    padding: 15px;
+    border: $second_color 5px solid;
+    @include cell_phone{
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    &__button{
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      background-color: $first_color;
+      top: -22.5px;
+      right: -22.5px;
+      cursor: pointer;
+      transition: .3s;
+      &:hover{
+        background-color: $background_color;
+        transition: .3s;
+        div{
+          background-color: white;
+          transition: .3s;
+        }
+      }
+      div{
+        width: 80%;
+        height: 5px;
+        background-color: $second_color;
+        position: absolute;
+        top: 17.5px;
+        left: 5px;
+      }
+      div:nth-child(1){
+        transform: rotate(45deg);
+      }
+      div:nth-child(2){
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &__gallery{
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    max-height: 50vh;
+    @include cell_phone{
+      grid-template-columns: 1fr;
+      grid-template-rows: 225px 50px;
+      gap: 10px;
+    }
+    &__list{
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      align-items: center;
+      @include cell_phone{
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(5, 1fr);
+        grid-row: 2;
+      }
+      img{
+        max-height: 100%;
+      }
+    }
+    &__main{
+      align-self: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__header{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      &__title{
+        flex: 1;
+        @include font_portfolio_item_title;
+        margin-bottom: 10px;
+        &:after{
+          content: '';
+          width: 100%;
+          height: 2px;
+          background: $background_color;
+          display: block;
+          margin-top: 5px;
+        }
+      }
+    }
+    &__description{
+      flex: 8;
+      @include font_portfolio_item_text;
+      padding: 5px;
+    }
+    &__price{
+      flex: 1;
+      @include font_portfolio_item_price;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

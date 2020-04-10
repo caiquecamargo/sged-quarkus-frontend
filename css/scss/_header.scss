@@ -1,0 +1,32 @@
+.header{
+  grid-area: 'header';
+  @include grid(1);
+  padding: 25px;
+  margin-bottom: 30px;
+  &__logo{
+    max-width: 450px;
+    justify-self: center;
+    @include cell_phone{
+      width: 85vw;
+      margin: 0 auto;
+    }
+  }
+  &__title{
+    @include font_header_title;
+    padding: 10px;
+    @include twocolors_linear_gradient($second_color, $first_color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    align-self: center;
+    justify-self: center;
+  }
+  &__description{
+    @include font_header_subtitle;
+    color: $first_color;
+    align-self: center;
+    justify-self: center;
+  }
+  @include cell_phone{
+    padding: 15px 0;
+  }
+}

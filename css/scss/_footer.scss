@@ -1,0 +1,14 @@
+.footer{
+    grid-area: 'footer';
+}
+
+.copyright{
+    margin-top: 75px;
+    padding: 30px;
+    color: white;
+    @include font_footer;
+    @include cell_phone{
+        margin-top: 45px;
+        padding: 15px;
+    }
+}
