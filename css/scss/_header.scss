@@ -1,32 +1,24 @@
 .header{
-  grid-area: 'header';
-  @include grid(1);
-  padding: 25px;
-  margin-bottom: 30px;
-  &__logo{
-    max-width: 450px;
-    justify-self: center;
-    @include cell_phone{
-      width: 85vw;
-      margin: 0 auto;
+  grid-area: header;
+  // grid-column: span 2;
+  background: $background_color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  &__nav{
+    &__container{
+      display: flex;
     }
-  }
-  &__title{
-    @include font_header_title;
-    padding: 10px;
-    @include twocolors_linear_gradient($second_color, $first_color);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    align-self: center;
-    justify-self: center;
-  }
-  &__description{
-    @include font_header_subtitle;
-    color: $first_color;
-    align-self: center;
-    justify-self: center;
-  }
-  @include cell_phone{
-    padding: 15px 0;
+    &__item + &__item{
+      margin-left: 15px;
+    }
+    &__link, &__text{
+      color: $white;
+      @include font_header_nav;
+    }
+    &__link{
+      @include text_color_animate($first_color);
+    }
   }
 }

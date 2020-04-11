@@ -11,11 +11,11 @@
 
 @mixin animate_background_color($actual, $next) {
   background-color: $actual;
-  transition: 0.5s background;
+  transition: 0.5s;
 
   &:hover {
     background-color: $next;
-    transition: 0.5s background;
+    transition: 0.5s;
   }
 }
 

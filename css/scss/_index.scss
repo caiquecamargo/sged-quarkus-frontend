@@ -1,199 +1,71 @@
-.main__index {
-  grid-area: 'content';
+.main__index{
+  display: grid;
+  grid: 
+    "logo login" 100vh
+    / 1fr 1fr
+  ;
 }
 
-.page-404 {
-  &__header {
-    justify-self: center;
-    margin-bottom: 75px;
+.logo{
+  grid-area: logo;
+  padding: 15px;
+  background-color: $background_color;
+  &__img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    
+  }
+}
 
-    @include cell_phone {
-      margin-bottom: 45px;
-    }
+.login{
+  grid-area: login;
+  justify-self: stretch;
+  padding: 30px 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
-    &__title {
-      @include font_main_title;
-    }
-
-    &__text {
-      @include font_main_subtitle;
-    }
-
-    &:after {
-      @include cell_phone {
-        content: '→';
-        color: $second_color;
-        position: absolute;
-        z-index: 20000;
-        top: 290px;
-        right: 15px;
-        @include animate_seta;
-      }
-    }
+  &__img{
+    min-height: 35%;
   }
 
-  &__modules {
+  &__form{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    margin-top: 30px;
+  }
 
-    @include little_window{
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-      justify-content: start;
-      max-width: 85vw;
-      margin: 0 auto;
-      padding: 15px 15px;
-    }
+  &__input{
+    margin-bottom: 15px;
+    padding: 5px;
+    @include font_header_nav;
+    color: $font_color;
+  }
 
-    @include cell_phone {
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-      justify-content: start;
-      max-width: 85vw;
-      margin: 0 auto;
-      padding: 15px 15px;
-    }
-
-    &>* {
-      flex: 1 0 250px;
-      display: grid;
-      grid: 'header'40% 'text'60%;
-      padding: 0 30px;
-      height: 450px;
-      background: $background_color;
-      color: white;
-      position: relative;
-      
-      @include medium_window{
-        padding: 0 15px;
-        height: 400px;
-      }
-
-      @include cell_phone {
-        min-width: 250px;
-        height: 350px;
-      }
-
-      &:before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        bottom: -2px;
-        left: -2px;
-        right: -2px;
-        transform: skew(2deg, 2deg);
-        z-index: -1;
-        @include fallback_horizontal_gradient($second_color);
-      }
-    }
-
-    &__header {
-      z-index: 200;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-      align-self: end;
-      @include font_main_module_title;
-    }
-
-    &__text {
-      z-index: 200;
-      @include font_main_module_text;
-      & strong {
-        text-transform: uppercase;
-      }
-    }
-
-    &__image {
-      position: absolute;
-      top: 100px;
-      right: 15px;
-      width: 200px;
-      height: 200px;
-      transition: .3s;
-
-      @include cell_phone {
-        width: 100px;
-        height: 100px;
-      }
-    }
-
-    &__instagram,
-    &__portfolio {
-      &:hover &__image {
-        top: 25px;
-        transition: .3s;
-      }
-
-      &:hover &__button {
-        bottom: 15px;
-        opacity: 1;
-        transition: .3s;
-      }
-    }
-
-    &__facebook,
-    &__who-we-are {
-      margin: 0 20px 0 40px;
-
-      &:hover &__image {
-        top: 25px;
-        transition: .3s;
-      }
-
-      &:hover &__button {
-        bottom: 15px;
-        opacity: 1;
-        transition: .3s;
-      }
-    }
-
-    &__who-we-are {
-      margin: 0 40px 0 20px;
-
-      &:hover &__image {
-        top: 25px;
-        transition: .3s;
-      }
-
-      &:hover &__button {
-        bottom: 15px;
-        opacity: 1;
-        transition: .3s;
-      }
-    }
-
-    &__button {
-      position: absolute;
-      bottom: 50px;
-      opacity: 0;
-      left: 30px;
-      background-color: white;
-      display: block;
-      padding: 10px 20px;
-      width: 80px;
-      @include font_main_module_button;
-      color: $background_color;
-      transition: .3s;
-      z-index: 200;
-
-      @include cell_phone {
-        bottom: 15px;
-        opacity: 1;
-      }
-
-      &:hover {
-        cursor: pointer;
-        background-color: $third_color;
-        color: white;
-
-        @include cell_phone {
-          cursor: none;
-          background-color: white;
-          color: $background_color;
-        }
-      }
+  &__label{
+    &__link{
+      text-align: right;
+      @include font_index_link;
+      color: $font_color;
+      @include text_color_animate($first_color);
     }
   }
+
+  &__button{
+    @include font_index_link;
+    margin-top: 15px;
+    padding: 10px 45px;
+    cursor: pointer;
+    border: none;
+    background: $background_color;
+    color: $white;
+    align-self: center;
+    @include animate_background_color($background_color, $first_color);
+  }
+
+  .erro{
+    display: none;
+  }
 }
+

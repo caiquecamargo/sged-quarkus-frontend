@@ -1,0 +1,18 @@
+.main__content {
+  position: relative;
+  grid-area: content;
+  /* max-height: 720px; */
+  justify-self: stretch;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  padding: 15px;
+}
+
+.header__page{
+  &__title{
+    margin: 60px auto 60px auto;
+    @include font_main_title;
+    color: $font_color;
+  }
+}

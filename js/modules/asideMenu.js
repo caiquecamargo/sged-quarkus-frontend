@@ -1,100 +1,67 @@
-import outsideClick from "./outsideClick.js";
+import Menu from "./menu"
+import Buttons from "./buttons"
 
 export default class AsideMenu {
-  constructor(dataAside, externalLinks) {
+  constructor(dataAside) {
     if (dataAside === undefined) {
       this.dataAside = {
-        menuMobile: '[data-aside="menu-mobile"]',
-        menuSandwich: '[data-aside="menu-sandwich"]',
-        menuSumario: '[data-aside="sumario"]',
-        mainMenu: '[data-aside="main-menu"]'
+        menuMobile: new Menu('[data-aside="menu-mobile"]'),
+        menuSandwich: new Menu('[data-aside="menu-sandwich"]'),
+        menuSumario: new Menu('[data-aside="sumario"]'),
+        mainMenu: new Menu('[data-aside="main-menu"]'),
+        menuMobileSumario: new Menu('[data-sumario="menu"'),
+        externalLinks: new Buttons('[data-externo]'),
+        whoWeAre: new Buttons('[data-active="who-we-are"]'),
+        portfolio: new Buttons('[data-active="portfolio"]')
       };
     } else {
       this.dataAside = dataAside;
     }
 
-    if (externalLinks === undefined) this.externalLinks = '[data-externo]';
-    else this.externalLinks = externalLinks;
-
-    this.menuMobile = document.querySelector(this.dataAside.menuMobile);
-    this.menuSandwich = document.querySelector(this.dataAside.menuSandwich);
-    this.menuSumario = document.querySelector(this.dataAside.menuSumario);
-    this.mainMenu = document.querySelector(this.dataAside.mainMenu);
-    this.externalLinks = document.querySelectorAll(this.externalLinks);
-
     this.aside_config = {
       index: () => {
-        if (!this.aside_config.asideMobile.classList.contains('display-none')) this.aside_config.asideMobile.classList.add('display-none');
-        if (!this.aside_config.asideSumario.classList.contains('display-none')) this.aside_config.asideSumario.classList.add('display-none');
-        if (!this.aside_config.asideMenu.classList.contains('display-none')) this.aside_config.asideMenu.classList.add('display-none');
-        this.aside_config.asideActiveWhoWeAre.forEach(item => {
-          if (item.classList.contains('active')) item.classList.remove('active');
-        })
-        this.aside_config.asideActivePortfolio.forEach(item => {
-          if (item.classList.contains('active')) item.classList.remove('active');
-        })
-        this.aside_config.asideSumarioActive.forEach(item => {
-          if (!item.classList.contains('display-none')) item.classList.add('display-none');
-        })
+        this.dataAside.menuMobile.hide();
+        this.dataAside.menuSumario.hide();
+        this.dataAside.mainMenu.hide();
+        this.dataAside.menuMobileSumario.hide();
+        this.dataAside.whoWeAre.removeClass();
+        this.dataAside.portfolio.removeClass();
       },
       portfolio: () => {
-        if (this.aside_config.asideMobile.classList.contains('display-none')) this.aside_config.asideMobile.classList.remove('display-none');
-        if (this.aside_config.asideSumario.classList.contains('display-none')) this.aside_config.asideSumario.classList.remove('display-none');
-        if (this.aside_config.asideMenu.classList.contains('display-none')) this.aside_config.asideMenu.classList.remove('display-none');
-        this.aside_config.asideActiveWhoWeAre.forEach(item => {
-          if (item.classList.contains('active')) item.classList.remove('active');
-        })
-        this.aside_config.asideActivePortfolio.forEach(item => {
-          if (!item.classList.contains('active')) item.classList.add('active');
-        })
-        this.aside_config.asideSumarioActive.forEach(item => {
-          if (item.classList.contains('display-none')) item.classList.remove('display-none');
-        })
+        this.dataAside.menuMobile.show();
+        this.dataAside.menuSumario.show();
+        this.dataAside.mainMenu.show();
+        this.dataAside.menuMobileSumario.show();
+        this.dataAside.whoWeAre.removeClass();
+        this.dataAside.portfolio.addClass();
       },
       "quem-somos": () => {
-        if (this.aside_config.asideMobile.classList.contains('display-none')) this.aside_config.asideMobile.classList.remove('display-none');
-        if (!this.aside_config.asideSumario.classList.contains('display-none')) this.aside_config.asideSumario.classList.add('display-none');
-        if (this.aside_config.asideMenu.classList.contains('display-none')) this.aside_config.asideMenu.classList.remove('display-none');
-        this.aside_config.asideActiveWhoWeAre.forEach(item => {
-          if (!item.classList.contains('active')) item.classList.add('active');
-        })
-        this.aside_config.asideActivePortfolio.forEach(item => {
-          if (item.classList.contains('active')) item.classList.remove('active');
-        })
-        this.aside_config.asideSumarioActive.forEach(item => {
-          if (!item.classList.contains('display-none')) item.classList.add('display-none');
-        })
+        this.dataAside.menuMobile.show();
+        this.dataAside.menuSumario.hide();
+        this.dataAside.mainMenu.show();
+        this.dataAside.menuMobileSumario.hide();
+        this.dataAside.whoWeAre.addClass();
+        this.dataAside.portfolio.removeClass();
       }
     }
   }
 
   addToggleEvent() {
-    this.menuSandwich.addEventListener('click', (event) => {
+    this.dataAside.menuSandwich.menu.addEventListener('click', (event) => {
       event.preventDefault();
-      this.menuMobile.classList.toggle('active');
-      this.menuSandwich.classList.toggle('active');
+      this.dataAside.menuMobile.toggle();
+      this.dataAside.menuSandwich.toggle();
     });
+  }
 
-    // this.mainMenu.addEventListener('click', event => {
-    //   event.preventDefault();
-    //   this.mainMenu.classList.toggle('active');
-    //   outsideClick(mainMenu, ['click'], () => {
-    //     this.mainMenu.classList.remove('active');
-    //   })
-    // })
-
-    // menuSumario.addEventListener('click', event => {
-    //   event.preventDefault();
-    //   this.menuSumario.classList.toggle('active');
-    //   outsideClick(menuSumario, ['click'], () => {
-    //     this.menuSumario.classList.remove('active');
-    //   })
-    // })
+  closeMenu() {
+    this.dataAside.menuSandwich.removeClass();
+    this.dataAside.menuMobile.removeClass();
   }
 
   addEventToExternalLinks() {
-    this.externalLinks.forEach(link => {
-      link.addEventListener('click', (event) => {
+    this.dataAside.externalLinks.addEventListenerToButtons((button) => {
+      button.addEventListener('click', (event) => {
         event.preventDefault();
         window.open(event.target.href);
       });
@@ -102,13 +69,9 @@ export default class AsideMenu {
   }
 
   attAsideDisplay() {
-    const aside = document.querySelectorAll('aside');
     const myPage = window.location.pathname.split("/").pop().split('.')[0];
-    this.aside_config.asideActiveWhoWeAre = document.querySelectorAll('[data-active="who-we-are"]');
-    this.aside_config.asideActivePortfolio = document.querySelectorAll('[data-active="portfolio"]');
-    this.aside_config.asideSumarioActive = document.querySelectorAll('[data-sumario="menu"');
-    [this.aside_config.asideMobile, this.aside_config.asideSumario, this.aside_config.asideMenu] = aside;
     if (myPage != '') this.aside_config[myPage]();
+    this.closeMenu()
   }
 
   init() {

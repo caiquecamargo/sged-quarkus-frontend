@@ -10,24 +10,10 @@ export default function initScrollSuaveLinkInterno() {
     closeMenuMobile();
     const href = event.currentTarget.getAttribute('href');
     const section = document.querySelector(href);
-    // const to = getScrollTopByHref(event.target) - 80;
-    // scrollToPosition(to);
     section.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     })
-  }
-
-  function getScrollTopByHref(element) {
-    const id = element.getAttribute('href');
-    return document.querySelector(id).offsetTop;
-  }
-
-  function scrollToPosition(to) {
-    window.scroll({
-      top: to,
-      behavior: "smooth"
-    });
   }
 
   function closeMenuMobile() {

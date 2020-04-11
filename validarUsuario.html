@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>SGED with ANTLR</title>
+
+<meta name="description" content="Projeto de Graduaçao em Computação pela Universidade Federal do ABC" data-meta="name">
+<meta property="og:title" content="SGED with ANTLR" data-meta="title"/>
+<meta property="og:type" content="website" data-meta="type"/>
+<meta property="og:description" content="Projeto de Graduaçao em Computação pela Universidade Federal do ABC" data-meta="description"/>
+<meta property="og:url" content="https://dev.caiquedecamargo.com/SGED/habilitar-usuario" data-meta="url"/>
+<!-- <meta property="og:image" content="https://dev.caiquedecamargo.com/SGED/img/og-image.png"/> -->
+
+<script>document.documentElement.className += ' js';</script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="container">
+  <main data-main="body">
+    <header class="header__page">
+      <h1 class="header__page__title">Habilitar Usuário</h1>
+    </header>
+    <main class="main__page">
+      <section class="lista-item">
+        <div class="trigger-wrapper">
+          <div class="trigger-label">
+            <h3 class="column-name">Nome</h3>
+            <h3 class="column-name">Situação</h3>
+            <h3 class="column-name">Email</h3>
+          </div>
+        </div>
+      </section>
+      <section class="lista-item">
+        <input type="checkbox" class="trigger-input" id="?id?">
+        <div class="trigger-wrapper">
+          <label for="?id?" class="trigger-label">
+            <h3 class="trigger-nome">?nome?</h3>
+            <h3 class="trigger-tipo">não habilitado</h3>
+            <h3 class="trigger-src">?email?</h3>
+          </label>
+          <form action="validateuser" method="POST" class="form-trigger">
+            <input value="?id?" name="txt_id_usuario" class="notdisplay">
+            <input type="number" min="?nivel_de_acesso?" placeholder="Nivel de acesso" name="txt_nivel_de_acesso">
+            <button class="trigger-conteudo" type="submit">Habilitar</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </main>
+</body>
+</html>

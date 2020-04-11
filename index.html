@@ -3,26 +3,40 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Igzzy - Loja de produtos personalizáveis</title>
+<title>SGED with ANTLR</title>
 
-<meta name="description" content="Compre produtos personalizados, como canecas, camisetas e muito mais." data-meta="name">
-<meta property="og:title" content="Igzzy - Loja de produtos personalizáveis" data-meta="title"/>
+<meta name="description" content="Projeto de Graduaçao em Computação pela Universidade Federal do ABC" data-meta="name">
+<meta property="og:title" content="SGED with ANTLR" data-meta="title"/>
 <meta property="og:type" content="website" data-meta="type"/>
-<meta property="og:description" content="Compre produtos personalizados, como canecas, camisetas e muito mais." data-meta="description"/>
-<meta property="og:url" content="https://www.igzzy.com.br/" data-meta="url"/>
-<!-- <meta property="og:image" content="https://www.igzzy.com.br/images/og-image.png"/> -->
+<meta property="og:description" content="Projeto de Graduaçao em Computação pela Universidade Federal do ABC" data-meta="description"/>
+<meta property="og:url" content="https://dev.caiquedecamargo.com/SGED/" data-meta="url"/>
+<!-- <meta property="og:image" content="https://dev.caiquedecamargo.com/SGED/img/og-image.png"/> -->
 
 <script>document.documentElement.className += ' js';</script>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Philosopher&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Cinzel+Decorative&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="container">
-    <header class="header">
-    </header>
-    <main class="main__index main" data-main="main">
-    </main>
-    <footer class="footer">
-    </footer>
-    <script src="main.js"></script>
+<body>
+  <main class="main__index">
+    <div class="logo">
+      <picture class="logo__picture">
+        <source media="(max-width: 720px)" srcset="img/SGED-tiny.svg">
+        <img src="img/SGED.svg" alt="Logo SGED" class="logo__img">
+      </picture>
+    </div>
+    <div class="login">
+      <img class="login__img" src="img/login_logo.svg" alt="Login logo">
+      <form class="login__form" role="form" action="loginservlet" method="POST">
+        <input class="login__input" type="text" placeholder="Email" name="txt_user">
+        <input class="login__input" type="password" placeholder="Senha" name="txt_password">
+        <label class="login__label">
+          <p class="erro">${errorSTR}</p>
+          <a class="login__label__link" href="home.html">Solicitar Registro</a>
+        </label>
+        <button class="login__button" type="submit">LOGIN</button>
+      </form>
+    </div>
+  </main>
+  <script src="main.js"></script>
 </body>
 </html>

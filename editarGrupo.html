@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>SGED with ANTLR</title>
+
+<meta name="description" content="Projeto de Graduaçao em Computação pela Universidade Federal do ABC" data-meta="name">
+<meta property="og:title" content="SGED with ANTLR" data-meta="title"/>
+<meta property="og:type" content="website" data-meta="type"/>
+<meta property="og:description" content="Projeto de Graduaçao em Computação pela Universidade Federal do ABC" data-meta="description"/>
+<meta property="og:url" content="https://dev.caiquedecamargo.com/SGED/editar-grupo" data-meta="url"/>
+<!-- <meta property="og:image" content="https://dev.caiquedecamargo.com/SGED/img/og-image.png"/> -->
+
+<script>document.documentElement.className += ' js';</script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="container">
+  <main data-main="body">
+    <header class="header__page">
+      <h1 class="header__page__title">Editar dados do grupo</h1>
+    </header>
+    <main class="main__page">
+      <form class="main__page__form" action="editgroup" class="editform">
+        <input class="main__page__input" value="?id?" name="txt_id_grupo" class="notdisplay">
+        <input class="main__page__input" type="text" value="?nome?" name="txt_nome">
+        <input class="main__page__input" type="text" value="?descricao?" name="txt_descricao">
+        <input class="main__page__input" type="number" value="?nivel?" name="txt_nivel">
+        <button class="main__page__button" type="submit" formmethod="POST">Atualizar</button>
+      </form>
+    </main>
+  </main>
+</body>
+</html>

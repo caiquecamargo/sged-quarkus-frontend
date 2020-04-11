@@ -1,4 +1,4 @@
-$main_font: 'News701 BT', sans-serif;
+$main_font: 'IBM Plex Mono', monospace;
 $second_font: 'Philosopher', cursive;
 
 //HEADER
@@ -19,14 +19,22 @@ $second_font: 'Philosopher', cursive;
   }
 }
 
+@mixin font_header_nav{
+  font-family: $main_font;
+  font-size: 1rem;
+}
+
 //INDEX
+@mixin font_index_link{
+  font-family: $main_font;
+  font-size: 0.875rem;
+}
+
 @mixin font_main_title{
   font-family: $main_font;
   font-size: 2.5rem;
-  line-height: 4rem;
   text-transform: uppercase;
   text-align: center;
-  @include font_linear_gradient_text_color($first_color);
   @include cell_phone{
     font-size: 1rem;
     line-height: 1.5rem;

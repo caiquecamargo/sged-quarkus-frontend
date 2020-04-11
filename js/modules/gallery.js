@@ -7,7 +7,8 @@ export default class Gallery {
   }
 
   changeImage({ currentTarget }) {
-    this.galleryMain.src = currentTarget.src;
+    this.galleryMain.style.background = `url(${currentTarget.src}) no-repeat center center`;
+    this.galleryMain.style.backgroundSize = 'contain';
   }
 
   addChangeEvent() {

@@ -18,15 +18,15 @@ export default class ReplaceHTML {
 
   replaceHtmlMain() {
     const oldMain = document.querySelector('[data-main="main"]');
-    const newMain = this.newHtml.querySelector('[data-main="main"]');
+    const newMain = this.newHtml.querySelector('[data-main="body"]');
+    console.log(this.newHtml)
     oldMain.innerHTML = newMain.innerHTML;
-    oldMain.classList = newMain.classList;
   }
 
   init() {
     if (this.newHtml.innerHTML != '') {
-      this.replaceHtmlTitle();
-      this.replaceHtmlMeta();
+      // this.replaceHtmlTitle();
+      // this.replaceHtmlMeta();
       this.replaceHtmlMain();
     }
     return this;
