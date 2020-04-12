@@ -9,13 +9,12 @@
   }
 }
 
-@mixin animate_background_color($actual, $next) {
-  background-color: $actual;
-  transition: 0.5s;
+@mixin animate_background_color($color) {
+  transition: 0.3s;
 
   &:hover {
-    background-color: $next;
-    transition: 0.5s;
+    background-color: $color;
+    transition: 0.3s;
   }
 }
 
@@ -55,8 +54,13 @@
 
   &:hover {
     box-shadow: inset 10px 0 0 0 $color;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
   }
+}
+
+@mixin animate_full_left_border($color) {
+  box-shadow: inset 250px 0 0 0 $color;
+  transition: .3s ease-out;
 }
 
 @mixin text_color_animate($color, $son: '') {

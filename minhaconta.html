@@ -21,21 +21,23 @@
     <a href="index.html" class="header__logo"><img class="header__logo__img" src="img/SGED-tiny.svg" alt="Logo SGED"></a>
     <nav class="header__nav"><ul class="header__nav__container">
       <li id="blink" class="header__nav__user header__nav__item"><p class="header__nav__user__text header__nav__text">Seja bem vindo usuário</p></li>
-      <li class="header__nav__account header__nav__item"><a href="minhaconta.html" class="header__nav__account__link header__nav__link" data-link="minhaconta">Minha conta</a></li>
+      <li class="header__nav__account header__nav__item"><a href="myaccount" class="header__nav__account__link header__nav__link">Minha conta</a></li>
       <li class="header__nav__logout header__nav__item"><a href="logoutservlet" class="header__nav__logout__link header__nav__link">Logout</a></li>
     </ul></nav>
   </header>
-  <aside class="aside__nav">
-    <ul class="aside__nav__container">
-      <li class="aside__nav__additem aside__nav__item"><a href="adicionarItem.html" class="aside__nav__additem__link aside__nav__link" data-link="adicionarItem">Adicionar novos itens <span></span></a></li>
-      <li class="aside__nav__viewitem aside__nav__item"><a href="visualizarItem.html" class="aside__nav__viewitem__link aside__nav__link" data-link="visualizarItem">Visualizar itens <span></span></a></li>
-      <li class="aside__nav__addgroup aside__nav__item"><a href="adicionarGrupo.html" class="aside__nav__addgroup__link aside__nav__link" data-link="adicionarGrupo">Adicionar grupos <span></span></a></li>
-      <li class="aside__nav__viewgroups aside__nav__item"><a href="visualizarGrupos.html" class="aside__nav__viewgroups__link aside__nav__link" data-link="visualizarGrupos">Editar grupos <span></span></a></li>
-      <li class="aside__nav__validateuser aside__nav__item"><a href="validarUsuario.html" class="aside__nav__validateuser__link aside__nav__link" data-link="validarUsuario">Habilitar Usuário <span></span></a></li>
-      <li class="aside__nav__viewusers aside__nav__item"><a href="visualizarUsuarios.html" class="aside__nav__viewusers__link aside__nav__link" data-link="visualizarUsuarios">Editar Usuário <span></span></a></li>
-    </ul>
-  </aside>
-  <main class="main__content main" data-main="main">
+  <main class="main__content main" data-main="body">
+    <header class="header__page">
+      <h1 class="header__page__title">Minha Conta</h1>
+    </header>
+    <main class="main__page">
+      <form class="main__page__form" action="attuser" method="POST">
+        <input class="main__page__input" type="text" placeholder="${usuario.getId()}" name="txt_nome" disabled>
+        <input class="main__page__input" type="text" placeholder="${usuario.getNome()}" name="txt_nome" disabled>
+        <input class="main__page__input" type="text" placeholder="${usuario.getEmail()}" name="txt_email" disabled>
+        <input class="main__page__input" type="password" value="${usuario.getSenha()}" name="txt_senha">
+        <button class="main__page__button" type="submit">Atualizar</button>
+      </form>
+    </main>
   </main>
   <footer class="footer">
     <p class="footer__text">Criado por Caique de Camargo como Projeto de Graduação em Computação pela Universidade Federal do ABC</p>

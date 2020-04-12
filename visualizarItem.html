@@ -21,32 +21,12 @@
     <header class="header__page">
       <h1 class="header__page__title">Seus arquivos</h1>
     </header>
-    <main class="main__page">
-      <section class="lista-item">
-        <div class="trigger-wrapper">
-          <div class="trigger-label">
-            <h3 class="column-name">Nome</h3>
-            <h3 class="column-name">Tipo</h3>
-            <h3 class="column-name">SRC</h3>
-          </div>
-        </div>
-      </section>
-      <section class="lista-item">
-        <input type="checkbox" class="trigger-input" id="?id?">
-        <div class="trigger-wrapper">
-          <label for="?id?" class="trigger-label">
-            <h3 class="trigger-nome">?nome?</h3>
-            <h3 class="trigger-tipo">?tipo?</h3>
-            <h3 class="trigger-src">?src?</h3>
-          </label>
-          <form action="deleteitem" method="POST" class="form-trigger">
-            <input value="?id?" name="txt_id_item" class="display-none">
-            <input value="?src?" name="txt_src" class="display-none">
-            <input value="?tipo?" name="txt_tipo" class="display-none">
-            <button class="trigger-conteudo" type="submit">Excluir</button>
-          </form>
-        </div>
-      </section>
+    <main class="main__page" data-main="main_page">
+      <header class="list__header">
+        <h3 class="list__header__column">Nome</h3>
+        <h3 class="list__header__column">Tipo</h3>
+        <h3 class="list__header__column">SRC</h3>
+      </header>
     </main>
   </main>
 </body>

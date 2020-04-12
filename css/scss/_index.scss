@@ -61,7 +61,7 @@
     background: $background_color;
     color: $white;
     align-self: center;
-    @include animate_background_color($background_color, $first_color);
+    @include animate_background_color($first_color);
   }
 
   .erro{

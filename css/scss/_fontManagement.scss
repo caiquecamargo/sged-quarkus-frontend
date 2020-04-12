@@ -24,6 +24,12 @@ $second_font: 'Philosopher', cursive;
   font-size: 1rem;
 }
 
+//HOME
+@mixin font_nav_link{
+  font-family: $main_font;
+  font-size: 0.875rem;
+}
+
 //INDEX
 @mixin font_index_link{
   font-family: $main_font;

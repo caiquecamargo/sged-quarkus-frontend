@@ -1,7 +1,5 @@
 .main__content {
-  position: relative;
   grid-area: content;
-  /* max-height: 720px; */
   justify-self: stretch;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -14,5 +12,141 @@
     margin: 60px auto 60px auto;
     @include font_main_title;
     color: $font_color;
+    @include underline($color: $background_color, $width: 50%, $margin: 5px);
   }
+}
+
+.main__page{
+  justify-self: stretch;
+
+  &__form{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input{
+    margin: 15px 25%;
+    padding: 10px;
+    border: $background_color solid 1px;
+    color: $font_color;
+    @include font_nav_link;
+  }
+
+  &__input.file{
+    padding: 50px;
+    border: $background_color dashed 2px;
+  }
+  
+  &__button{
+    margin: 15px auto;
+    width: 350px;
+    padding: 10px;
+    @include font_nav_link;
+    border: none;
+    cursor: pointer;
+    background-color: $background_color;
+    color: $white;
+    @include animate_background_color($first_color);
+  }
+}
+
+/* WRAPPER */
+.list__header{
+  display: flex;
+  background: $background_color;
+  padding: 10px;
+  margin-bottom: 15px;
+
+  &__column{
+    @include font_nav_link;
+    text-transform: uppercase;
+    color: $white;
+
+    &:nth-child(1), &:nth-child(2){
+      flex: 1;
+    }
+
+    &:last-child{
+      flex: 4;
+    }
+  }
+}
+
+.list__item {
+  background: $background_color;
+  margin-bottom: 15px;
+  @include animate_background_color($first_color);
+
+  &__trigger-input {
+    display: none;
+  }
+  
+  &__trigger-label{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+    
+    &::after{
+      content: '+';
+      font-size: 1.25rem;
+      transition: .3s;
+      color: $white;
+      margin-right: 10px;
+      margin-left: 5px;
+      display: inline-block;
+    }
+  }
+
+  &__trigger-text{
+    @include font_nav_link;
+    color: white;
+
+    &:nth-child(1), &:nth-child(2){
+      flex: 1;
+    }
+
+    &:nth-child(3){
+      flex: 4;
+    }
+  }
+
+  &__form-trigger{
+    max-height: 0;
+    overflow: hidden;
+    transition: .2s;
+    padding-left: 10px;
+
+    &__input{
+      padding: 9px;
+      @include font_nav_link;
+      color: $background_color;
+      border: none;
+    }
+
+    &__button{
+      margin-bottom: 10px;
+      border: none;
+      padding: 10px 15px;
+      background-color: $black;
+      color: $white;
+      cursor: pointer;
+      @include font_nav_link;
+      @include animate_background_color($background_color);
+    }
+  }
+
+  &__trigger-input:checked + &__trigger-wrapper &__form-trigger {
+    max-height: 100vh;
+    transition: 1s;
+  }
+
+  &__trigger-input:checked + &__trigger-wrapper &__trigger-label::after {
+    transition: .3s;
+    transform: rotate(45deg) scale(1.08);
+  }
+}
+
+.display-none{
+  display: none;
 }

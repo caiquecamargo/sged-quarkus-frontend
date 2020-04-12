@@ -2,15 +2,37 @@
   grid-area: nav;
   background-color: $background_color;
   padding: 15px;
+
   &__item + &__item{
     border-top: solid #fff 1px;
   }
+
   &__link{
-    @include font_header_nav;
+    @include font_nav_link;
     color: $white;
     padding: 15px;
-    padding-left: 0;
+    position: relative;
+    // padding-left: 0;
     text-transform: uppercase;
+    z-index: 2;
     @include animate_left_border($first_color);
+
+    span{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background-color: $first_color;
+      z-index: -1;
+      transition: .3s;
+    }
+  }
+
+  &__link.active{
+    span{
+      width: 100%;
+      transition: .3s;
+    }
   }
 }

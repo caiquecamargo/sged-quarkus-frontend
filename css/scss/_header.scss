@@ -20,5 +20,8 @@
     &__link{
       @include text_color_animate($first_color);
     }
+    &__link.active{
+      color: $first_color;
+    }
   }
 }

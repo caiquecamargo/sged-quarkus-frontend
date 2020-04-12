@@ -629,6 +629,10 @@ a {
   transition: color 0.3s ease;
 }
 
+.header__nav__link.active {
+  color: #93161E;
+}
+
 .aside__nav {
   grid-area: nav;
   background-color: #002D40;
@@ -641,11 +645,12 @@ a {
 
 .aside__nav__link {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: #fff;
   padding: 15px;
-  padding-left: 0;
+  position: relative;
   text-transform: uppercase;
+  z-index: 2;
   -webkit-box-shadow: inset 0 0 0 0 #93161E;
           box-shadow: inset 0 0 0 0 #93161E;
   -webkit-transition: -webkit-box-shadow 0.3s ease;
@@ -657,8 +662,26 @@ a {
 .aside__nav__link:hover {
   -webkit-box-shadow: inset 10px 0 0 0 #93161E;
           box-shadow: inset 10px 0 0 0 #93161E;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.aside__nav__link span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: #93161E;
+  z-index: -1;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.aside__nav__link.active span {
+  width: 100%;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 .main__index {
@@ -745,15 +768,14 @@ a {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  background-color: #002D40;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .login__button:hover {
   background-color: #93161E;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .login .erro {
@@ -761,9 +783,7 @@ a {
 }
 
 .main__content {
-  position: relative;
   grid-area: content;
-  /* max-height: 720px; */
   -ms-grid-column-align: stretch;
       justify-self: stretch;
   overflow-y: auto;
@@ -788,6 +808,203 @@ a {
   }
 }
 
+.header__page__title::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  margin: 5px auto;
+  background: #002D40;
+  border-radius: 4px;
+}
+
+.main__page {
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+}
+
+.main__page__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main__page__input {
+  margin: 15px 25%;
+  padding: 10px;
+  border: #002D40 solid 1px;
+  color: #002D40;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+}
+
+.main__page__input.file {
+  padding: 50px;
+  border: #002D40 dashed 2px;
+}
+
+.main__page__button {
+  margin: 15px auto;
+  width: 350px;
+  padding: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  background-color: #002D40;
+  color: #fff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.main__page__button:hover {
+  background-color: #93161E;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* WRAPPER */
+.list__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #002D40;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.list__header__column {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.list__header__column:nth-child(1), .list__header__column:nth-child(2) {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.list__header__column:last-child {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+}
+
+.list__item {
+  background: #002D40;
+  margin-bottom: 15px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.list__item:hover {
+  background-color: #93161E;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.list__item__trigger-input {
+  display: none;
+}
+
+.list__item__trigger-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.list__item__trigger-label::after {
+  content: '+';
+  font-size: 1.25rem;
+  -webkit-transition: .3s;
+  transition: .3s;
+  color: #fff;
+  margin-right: 10px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+.list__item__trigger-text {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  color: white;
+}
+
+.list__item__trigger-text:nth-child(1), .list__item__trigger-text:nth-child(2) {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.list__item__trigger-text:nth-child(3) {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+}
+
+.list__item__form-trigger {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: .2s;
+  transition: .2s;
+  padding-left: 10px;
+}
+
+.list__item__form-trigger__input {
+  padding: 9px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  color: #002D40;
+  border: none;
+}
+
+.list__item__form-trigger__button {
+  margin-bottom: 10px;
+  border: none;
+  padding: 10px 15px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.list__item__form-trigger__button:hover {
+  background-color: #002D40;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.list__item__trigger-input:checked + .list__item__trigger-wrapper .list__item__form-trigger {
+  max-height: 100vh;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.list__item__trigger-input:checked + .list__item__trigger-wrapper .list__item__trigger-label::after {
+  -webkit-transition: .3s;
+  transition: .3s;
+  -webkit-transform: rotate(45deg) scale(1.08);
+          transform: rotate(45deg) scale(1.08);
+}
+
+.display-none {
+  display: none;
+}
+
 .main {
   min-height: 65vh;
 }
@@ -803,7 +1020,7 @@ a {
 }
 
 .loading {
-  grid-column: 1 / -1;
+  padding: 25%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -823,7 +1040,7 @@ a {
   position: absolute;
   width: 6px;
   height: 6px;
-  background: #fff;
+  background: #002D40;
   border-radius: 50%;
   -webkit-animation: lds-default 1.2s linear infinite;
           animation: lds-default 1.2s linear infinite;

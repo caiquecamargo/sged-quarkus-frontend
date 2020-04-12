@@ -8,14 +8,14 @@
   }
 }
 
-@mixin underline($width: 215px, $height: 3px, $margin: 0px, $align: auto){
+@mixin underline($width: 215px, $height: 3px, $margin: 0px, $align: auto, $color: $second_color){
   &::after{
     content: '';
     display: block;
     width: $width;
     height: $height;
     margin: $margin $align;
-    background: $second_color;
+    background: $color;
     border-radius: 4px;
   }
 }

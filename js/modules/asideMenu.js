@@ -1,83 +1,63 @@
-import Menu from "./menu"
+import Element from "./elements"
 import Buttons from "./buttons"
 
 export default class AsideMenu {
   constructor(dataAside) {
     if (dataAside === undefined) {
-      this.dataAside = {
-        menuMobile: new Menu('[data-aside="menu-mobile"]'),
-        menuSandwich: new Menu('[data-aside="menu-sandwich"]'),
-        menuSumario: new Menu('[data-aside="sumario"]'),
-        mainMenu: new Menu('[data-aside="main-menu"]'),
-        menuMobileSumario: new Menu('[data-sumario="menu"'),
-        externalLinks: new Buttons('[data-externo]'),
-        whoWeAre: new Buttons('[data-active="who-we-are"]'),
-        portfolio: new Buttons('[data-active="portfolio"]')
-      };
+      this.dataAside = this.createElements();
     } else {
       this.dataAside = dataAside;
     }
 
     this.aside_config = {
-      index: () => {
-        this.dataAside.menuMobile.hide();
-        this.dataAside.menuSumario.hide();
-        this.dataAside.mainMenu.hide();
-        this.dataAside.menuMobileSumario.hide();
-        this.dataAside.whoWeAre.removeClass();
-        this.dataAside.portfolio.removeClass();
+      "minhaconta": () => {
+        this.deactive();
+        this.active("minhaconta");
       },
-      portfolio: () => {
-        this.dataAside.menuMobile.show();
-        this.dataAside.menuSumario.show();
-        this.dataAside.mainMenu.show();
-        this.dataAside.menuMobileSumario.show();
-        this.dataAside.whoWeAre.removeClass();
-        this.dataAside.portfolio.addClass();
+      "adicionarItem": () => {
+        this.deactive();
+        this.active("adicionarItem");
       },
-      "quem-somos": () => {
-        this.dataAside.menuMobile.show();
-        this.dataAside.menuSumario.hide();
-        this.dataAside.mainMenu.show();
-        this.dataAside.menuMobileSumario.hide();
-        this.dataAside.whoWeAre.addClass();
-        this.dataAside.portfolio.removeClass();
+      "visualizarItem": () => {
+        this.deactive();
+        this.active("visualizarItem");
+      },
+      "adicionarGrupo": () => {
+        this.deactive();
+        this.active("adicionarGrupo");
+      },
+      "visualizarGrupos": () => {
+        this.deactive();
+        this.active("visualizarGrupos");
+      },
+      "validarUsuario": () => {
+        this.deactive();
+        this.active("validarUsuario");
+      },
+      "visualizarUsuarios": () => {
+        this.deactive();
+        this.active("visualizarUsuarios");
       }
     }
   }
 
-  addToggleEvent() {
-    this.dataAside.menuSandwich.menu.addEventListener('click', (event) => {
-      event.preventDefault();
-      this.dataAside.menuMobile.toggle();
-      this.dataAside.menuSandwich.toggle();
+  createElements() {
+    const elements = [...document.querySelectorAll('[data-link]')];
+    return elements.map(element => new Element(element));
+  }
+
+  deactive() {
+    this.dataAside.forEach(element => {
+      element.removeClass();
     });
   }
 
-  closeMenu() {
-    this.dataAside.menuSandwich.removeClass();
-    this.dataAside.menuMobile.removeClass();
+  active(node) {
+    const item = this.dataAside.filter(element => element.dataset('link') === node).pop();
+    item.addClass();
   }
 
-  addEventToExternalLinks() {
-    this.dataAside.externalLinks.addEventListenerToButtons((button) => {
-      button.addEventListener('click', (event) => {
-        event.preventDefault();
-        window.open(event.target.href);
-      });
-    })
-  }
-
-  attAsideDisplay() {
-    const myPage = window.location.pathname.split("/").pop().split('.')[0];
+  attAsideDisplay(myPage) {
     if (myPage != '') this.aside_config[myPage]();
-    this.closeMenu()
-  }
-
-  init() {
-    this.addToggleEvent();
-    this.addEventToExternalLinks();
-    this.attAsideDisplay();
-    return this;
   }
 }

@@ -1,18 +1,22 @@
 import AsideMenu from "./asideMenu";
-import Portfolio from "./portfolio";
 import ReplaceHTML from "./replaceHTML";
 import loadingAnimation from "./loading_animation";
 import Buttons from "./buttons";
+import backendBridge from "./backendBridge";
 
 export default function initPageSelector() {
   async function fetchPage(url) {
     const pageResponse = await fetch(url);
     const pageHtml = await pageResponse.text();
-    const replaceHTML = new ReplaceHTML(pageHtml);
+    const backendData = await backendBridge(getPage(url));
+    const replaceHTML = new ReplaceHTML(pageHtml, backendData, getPage(url));
     replaceHTML.init();
-    // asideMenu.attAsideDisplay();
+    asideMenu.attAsideDisplay(getPage(url));
+  }
 
-    // callingPortfolioHandler();
+  function getPage(url) {
+    const page = url.split("/")[3];
+    return page.split(".")[0];
   }
 
   function handleClick(event) {
@@ -26,11 +30,9 @@ export default function initPageSelector() {
   //   fetchPage(window.location.href);
   // })
 
-  // const asideMenu = new AsideMenu();
-  // asideMenu.init();
+  const asideMenu = new AsideMenu();
   const buttons = new Buttons('[data-link]');
   buttons.addEventListenerToButtons((button) => {
     button.addEventListener('click', handleClick);
   });
-  // callingPortfolioHandler();
 }

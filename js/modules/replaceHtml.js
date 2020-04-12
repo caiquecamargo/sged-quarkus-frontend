@@ -1,7 +1,11 @@
+import dataHandler from "./dataHandler";
+
 export default class ReplaceHTML {
-  constructor(pageHtml) {
+  constructor(pageHtml, backendData, url) {
     this.newHtml = document.createElement('div');
     this.newHtml.innerHTML = pageHtml;
+    this.backendData = [...backendData];
+    this.url = url;
   }
 
   replaceHtmlTitle() {
@@ -16,10 +20,16 @@ export default class ReplaceHTML {
     })
   }
 
+  replaceHtmlWithBackendData() {
+    const main = this.newHtml.querySelector('[data-main="main_page"]');
+    this.backendData.forEach(element => {
+      main.appendChild(dataHandler(this.url, element));
+    })
+  }
+
   replaceHtmlMain() {
     const oldMain = document.querySelector('[data-main="main"]');
     const newMain = this.newHtml.querySelector('[data-main="body"]');
-    console.log(this.newHtml)
     oldMain.innerHTML = newMain.innerHTML;
   }
 
@@ -27,6 +37,7 @@ export default class ReplaceHTML {
     if (this.newHtml.innerHTML != '') {
       // this.replaceHtmlTitle();
       // this.replaceHtmlMeta();
+      this.replaceHtmlWithBackendData();
       this.replaceHtmlMain();
     }
     return this;
