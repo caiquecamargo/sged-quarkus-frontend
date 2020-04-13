@@ -1,5 +1,4 @@
 import Element from "./elements"
-import Buttons from "./buttons"
 
 export default class AsideMenu {
   constructor(dataAside) {

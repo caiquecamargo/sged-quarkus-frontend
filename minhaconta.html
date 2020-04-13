@@ -29,13 +29,13 @@
     <header class="header__page">
       <h1 class="header__page__title">Minha Conta</h1>
     </header>
-    <main class="main__page">
+    <main class="main__page" data-main="main_page">
       <form class="main__page__form" action="attuser" method="POST">
         <input class="main__page__input" type="text" placeholder="${usuario.getId()}" name="txt_nome" disabled>
         <input class="main__page__input" type="text" placeholder="${usuario.getNome()}" name="txt_nome" disabled>
         <input class="main__page__input" type="text" placeholder="${usuario.getEmail()}" name="txt_email" disabled>
         <input class="main__page__input" type="password" value="${usuario.getSenha()}" name="txt_senha">
-        <button class="main__page__button" type="submit">Atualizar</button>
+        <button class="main__page__button" type="submit" data-button="attuser">Atualizar</button>
       </form>
     </main>
   </main>

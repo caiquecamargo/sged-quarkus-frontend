@@ -1,0 +1,73 @@
+.modal__sign-up{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+
+  &__container{
+    height: 50vh;
+    width: 50vw;
+    background-color: $white;
+    border: $background_color double 15px;
+    padding: 15px;
+    margin: 0 auto;
+    transform: translate3d(0, -100px, 0);
+    transition: .3s;
+  }
+
+  &__header{
+    &__text{
+      margin: 30px auto 30px auto;
+      @include font_main_title;
+      font-size: 2rem;
+      color: $font_color;
+      @include underline($color: $background_color, $width: 50%, $margin: 5px);
+    }
+  }
+
+  &__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__input{
+    border: $background_color solid 1px;
+    padding: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 350px;
+    @include font_nav_link;
+  }
+
+  &__button{
+    margin: 15px auto;
+    width: 250px;
+    padding: 10px;
+    @include font_nav_link;
+    border: none;
+    cursor: pointer;
+    background-color: $background_color;
+    color: $white;
+    @include animate_background_color($first_color);
+  }
+
+  &.active{
+    transition: .3s;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &.active &__container{
+    transition: .3s;
+    transform: translate3d(0, 0, 0);
+  }
+}

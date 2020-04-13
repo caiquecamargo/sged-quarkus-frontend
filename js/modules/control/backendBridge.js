@@ -1,6 +1,7 @@
 export default function backendBridge(pagina) {
   async function fetchData(url) {
     const response = await fetch(url);
+    response.headers.forEach(r => console.log(r));
     return await response.json();
   }
 

@@ -26,17 +26,31 @@
     </div>
     <div class="login">
       <img class="login__img" src="img/login_logo.svg" alt="Login logo">
-      <form class="login__form" role="form" action="loginservlet" method="POST">
+      <form class="login__form" role="form" action="home.html" method="POST">
         <input class="login__input" type="text" placeholder="Email" name="txt_user">
         <input class="login__input" type="password" placeholder="Senha" name="txt_password">
         <label class="login__label">
           <p class="erro">${errorSTR}</p>
-          <a class="login__label__link" href="home.html">Solicitar Registro</a>
+          <a class="login__label__link" href="" data-button="sign-up">Solicitar Registro</a>
         </label>
-        <button class="login__button" type="submit">LOGIN</button>
+        <!-- <button class="login__button" type="submit">LOGIN</button> -->
+        <a class="login__button" href="home.html">LOGIN</a>
       </form>
     </div>
   </main>
+  <section class="modal__sign-up" data-modal="sign-up">
+    <div class="modal__sign-up__container" data-modal="container">
+      <header class="modal__sign-up__header">
+        <h1 class="modal__sign-up__header__text"> Formulário de cadastro </h1>
+      </header>
+      <form class="modal__sign-up__form" action="">
+        <input class="modal__sign-up__input" type="text" placeholder="Nome">
+        <input class="modal__sign-up__input" type="text" placeholder="Email">
+        <input class="modal__sign-up__input" type="text" placeholder="Senha">
+        <button class="modal__sign-up__button" type="submit">Enviar solicitação</button>
+      </form>
+    </div>
+  </section>
   <script src="main.js"></script>
 </body>
 </html>

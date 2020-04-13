@@ -1,11 +1,9 @@
-import dataHandler from "./dataHandler";
+import dataHandler from "../control/dataHandler";
 
 export default class ReplaceHTML {
   constructor(pageHtml, backendData, url) {
     this.newHtml = document.createElement('div');
     this.newHtml.innerHTML = pageHtml;
-    this.backendData = [...backendData];
-    this.url = url;
   }
 
   replaceHtmlTitle() {
@@ -20,10 +18,10 @@ export default class ReplaceHTML {
     })
   }
 
-  replaceHtmlWithBackendData() {
+  replaceHtmlWithBackendData(backendData, url) {
     const main = this.newHtml.querySelector('[data-main="main_page"]');
-    this.backendData.forEach(element => {
-      main.appendChild(dataHandler(this.url, element));
+    backendData.forEach(element => {
+      main.appendChild(dataHandler(url, element));
     })
   }
 
@@ -35,9 +33,6 @@ export default class ReplaceHTML {
 
   init() {
     if (this.newHtml.innerHTML != '') {
-      // this.replaceHtmlTitle();
-      // this.replaceHtmlMeta();
-      this.replaceHtmlWithBackendData();
       this.replaceHtmlMain();
     }
     return this;

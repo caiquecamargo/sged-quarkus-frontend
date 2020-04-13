@@ -1,6 +1,11 @@
 export default class Element {
   constructor(element) {
-    this.element = element;
+    if (typeof element === "string") this.element = document.querySelector(element);
+    else this.element = element;
+  }
+
+  addClick(callback) {
+    this.element.addEventListener('click', callback);
   }
 
   dataset(data) {
@@ -8,11 +13,11 @@ export default class Element {
   }
 
   show() {
-    this.element.classList.remove('display-none');
+    this.element.style.display = "";
   }
 
   hide() {
-    this.element.classList.add('display-none');
+    this.element.style.display = "none";
   }
 
   toggle(newClass = 'active') {

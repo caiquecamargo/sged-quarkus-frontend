@@ -562,6 +562,10 @@ a {
   display: block;
 }
 
+.display-none {
+  display: none;
+}
+
 /* CONTAINER */
 .container {
   display: -ms-grid;
@@ -1003,6 +1007,125 @@ a {
 
 .display-none {
   display: none;
+}
+
+.modal__sign-up {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.modal__sign-up__container {
+  height: 50vh;
+  width: 50vw;
+  background-color: #fff;
+  border: #002D40 double 15px;
+  padding: 15px;
+  margin: 0 auto;
+  -webkit-transform: translate3d(0, -100px, 0);
+          transform: translate3d(0, -100px, 0);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.modal__sign-up__header__text {
+  margin: 30px auto 30px auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2rem;
+  color: #002D40;
+}
+
+@media (max-width: 768px) {
+  .modal__sign-up__header__text {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+.modal__sign-up__header__text::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  margin: 5px auto;
+  background: #002D40;
+  border-radius: 4px;
+}
+
+.modal__sign-up__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal__sign-up__input {
+  border: #002D40 solid 1px;
+  padding: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 350px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+}
+
+.modal__sign-up__button {
+  margin: 15px auto;
+  width: 250px;
+  padding: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  background-color: #002D40;
+  color: #fff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.modal__sign-up__button:hover {
+  background-color: #93161E;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.modal__sign-up.active {
+  -webkit-transition: .3s;
+  transition: .3s;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__sign-up.active .modal__sign-up__container {
+  -webkit-transition: .3s;
+  transition: .3s;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .main {

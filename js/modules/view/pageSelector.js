@@ -1,16 +1,16 @@
 import AsideMenu from "./asideMenu";
-import ReplaceHTML from "./replaceHTML";
+import PageHandler from "../control/pageHandler";
 import loadingAnimation from "./loading_animation";
 import Buttons from "./buttons";
-import backendBridge from "./backendBridge";
+import backendBridge from "../control/backendBridge";
 
 export default function initPageSelector() {
   async function fetchPage(url) {
     const pageResponse = await fetch(url);
     const pageHtml = await pageResponse.text();
     const backendData = await backendBridge(getPage(url));
-    const replaceHTML = new ReplaceHTML(pageHtml, backendData, getPage(url));
-    replaceHTML.init();
+    const pageHandler = new PageHandler(pageHtml, url, backendData);
+    pageHandler.init();
     asideMenu.attAsideDisplay(getPage(url));
   }
 
