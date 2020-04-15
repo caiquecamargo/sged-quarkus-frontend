@@ -29,28 +29,6 @@ export default class PageHandler {
             "tipo": myFile.files[0].type
           }
 
-          const filex = {
-            dom: document.querySelector('[data-input="file"]'),
-            binary: null
-          };
-
-          const reader = new FileReader();
-          reader.addEventListener("load", function () {
-            filex.binary = reader.result;
-          });
-          if (filex.dom.files[0]) {
-            reader.readAsBinaryString(filex.dom.files[0]);
-          }
-          filex.dom.addEventListener("change", function () {
-            if (reader.readyState === FileReader.LOADING) {
-              reader.abort();
-            }
-
-            reader.readAsBinaryString(filex.dom.files[0]);
-          });
-
-          console.log(filex)
-
           fetch("http://localhost:8080/items", {
             method: "POST",
             body: JSON.stringify(file),
@@ -61,10 +39,23 @@ export default class PageHandler {
             .then(response => {
               console.log(response)
               response.headers.forEach(r => console.log(r))
+              console.log(btoa(myFile.files[0]));
               return response.text()
             })
             .then(json => {
               console.log(json)
+              const formData = new FormData();
+              const id = json.split("/").pop();
+              formData.append("id", id);
+              fetch(json, {
+                method: "PUT",
+                headers: {
+                  "content-type": "multipart/form-data",
+                  "content-lenght": myFile.files[0].size
+                },
+                body: formData
+              })
+                .then(response => console.log(response));
             })
             ;
         })
