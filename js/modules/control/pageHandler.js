@@ -1,11 +1,12 @@
 import ReplaceHtml from "../view/replaceHtml";
-import Buttons from "../view/buttons";
+import Logger from "../log/logger"
+import Item from "../model/item";
+import ItemController from "./itemController";
 
 export default class PageHandler {
   constructor(pageHtml, url, backendData) {
     this.replaceHtml = new ReplaceHtml(pageHtml);
-    this.url = url;
-    this.page = this.getPage();
+    this.page = this.getPage(url);
     this.backendData = backendData;
 
     this.pages = {
@@ -14,50 +15,24 @@ export default class PageHandler {
       },
       "adicionarItem": () => {
         this.replaceHtml.init();
-        const button = new Buttons('[data-button="fileupload]"');
+
         const dataForm = document.querySelector("[data-form='adicionar_item']");
         dataForm.addEventListener('submit', (event) => {
           event.preventDefault();
           const myFile = document.querySelector('[data-input="file"]');
           const restricoes = document.querySelector('[data-input="restricoes"]');
-          console.log(restricoes)
-          const file = {
-            "id": 0,
-            "nome": myFile.files[0].name,
-            "restricoes": restricoes.value,
-            "src": "string",
-            "tipo": myFile.files[0].type
-          }
 
-          fetch("http://localhost:8080/items", {
-            method: "POST",
-            body: JSON.stringify(file),
-            headers: {
-              "content-type": "application/json"
-            }
-          })
-            .then(response => {
-              console.log(response)
-              response.headers.forEach(r => console.log(r))
-              console.log(btoa(myFile.files[0]));
-              return response.text()
-            })
-            .then(json => {
-              console.log(json)
-              const formData = new FormData();
-              const id = json.split("/").pop();
-              formData.append("id", id);
-              fetch(json, {
-                method: "PUT",
-                headers: {
-                  "content-type": "multipart/form-data",
-                  "content-lenght": myFile.files[0].size
-                },
-                body: formData
-              })
-                .then(response => console.log(response));
-            })
-            ;
+          if (myFile.files.length != 0) {
+            const item = new Item();
+            item.setNome(myFile.files[0].name);
+            item.setRestricoes(restricoes.value);
+            item.setTipo(myFile.files[0].type);
+
+            const itemController = new ItemController(item);
+            itemController.fetchItem(new FormData(dataForm));
+          } else {
+            Logger.log("Arquivo não selecionado.");
+          }
         })
       },
       "visualizarItem": () => {
@@ -82,8 +57,8 @@ export default class PageHandler {
     }
   }
 
-  getPage() {
-    const page = this.url.split("/")[3];
+  getPage(url) {
+    const page = url.split("/")[3];
     return page.split(".")[0];
   }
 

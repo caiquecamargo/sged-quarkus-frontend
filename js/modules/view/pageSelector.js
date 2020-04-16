@@ -6,8 +6,8 @@ import backendBridge from "../control/backendBridge";
 
 export default function initPageSelector() {
   async function fetchPage(url) {
-    const pageResponse = await fetch(url);
-    const pageHtml = await pageResponse.text();
+    const response = await fetch(url);
+    const pageHtml = await response.text();
     const backendData = await backendBridge(getPage(url));
     const pageHandler = new PageHandler(pageHtml, url, backendData);
     pageHandler.init();

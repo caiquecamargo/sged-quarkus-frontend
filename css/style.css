@@ -570,7 +570,7 @@ a {
 .container {
   display: -ms-grid;
   display: grid;
-  grid: "header header" 75px "nav    content" 1fr "footer footer" 50px / 1fr 5fr;
+  grid: "header header" 75px "nav    content" 1fr "nav    log" 25px "footer footer" 50px / 1fr 5fr;
   height: 100vh;
 }
 
@@ -1003,6 +1003,27 @@ a {
   transition: .3s;
   -webkit-transform: rotate(45deg) scale(1.08);
           transform: rotate(45deg) scale(1.08);
+}
+
+.log {
+  background-color: #93161E;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 5px;
+}
+
+.log__message {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #fff;
 }
 
 .display-none {
